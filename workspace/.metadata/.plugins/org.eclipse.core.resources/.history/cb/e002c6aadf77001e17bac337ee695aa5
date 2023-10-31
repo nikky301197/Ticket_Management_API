@@ -1,0 +1,29 @@
+package com.ticket_management_tool.controller;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.ticket_management_tool.entity.Category;
+import com.ticket_management_tool.service.CategoryService;
+
+@RestController
+@RequestMapping("")
+public class CategoryController {
+
+	@Autowired
+	CategoryService categoryservice;
+	@GetMapping("/")
+	ResponseEntity<List<Category>> getAllCategory()
+	{
+		List<Category> list =  categoryservice.getallCategory();
+		return new ResponseEntity(list , HttpStatus.NOT_FOUNDt);
+	}
+	
+	deleteCategoryById(Integer id )
+}

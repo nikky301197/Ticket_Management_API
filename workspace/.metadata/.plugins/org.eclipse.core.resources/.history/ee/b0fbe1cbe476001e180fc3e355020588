@@ -1,0 +1,8 @@
+package com.ticket_management_tool.exception;
+
+public class ResourceNotFoundException extends Exception 
+{
+	
+	
+
+}

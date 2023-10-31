@@ -1,0 +1,14 @@
+package com.ticket_management_tool.service;
+
+import java.util.List;
+
+import org.springframework.stereotype.Service;
+
+@Service 
+public interface TicketTeamInfo {
+	
+	List<TicketTeamInfo> getAllTicketTeamInfo();
+	TicketTeamInfo createTicketTeamInfo();
+	String deleteTicketTeamInfoById();
+
+}

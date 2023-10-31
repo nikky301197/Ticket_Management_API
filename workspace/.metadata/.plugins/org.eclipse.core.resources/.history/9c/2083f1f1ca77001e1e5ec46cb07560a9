@@ -1,0 +1,49 @@
+package com.ticket_management_tool.controller;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.ticket_management_tool.entity.User;
+import com.ticket_management_tool.exception.ResourceNotFoundException;
+import com.ticket_management_tool.service.UserService;
+
+@RestController
+@RequestMapping("/ticket_management_tool/user")
+public class UserController {
+
+ @Autowired
+ UserService userservice ;	
+ 
+ @GetMapping("/")
+ ResponseEntity<List<User>> getAllUser() throws ResourceNotFoundException{
+   List<User> list =  userservice.getAllUser();	
+   
+   return new ResponseEntity<>(list , HttpStatus.OK) ; 
+ }
+ @PostMapping("/")
+ ResponseEntity<User> createUser(@RequestBody User user )
+ {
+	User u1 =  userservice.createUser(user);
+	return new ResponseEntity<User>(u1 , HttpStatus.CREATED);
+ }
+ 
+ @DeleteMapping("/{id}")
+ ResponseEntity<String>  deleteUserById(@PathVariable Integer  id )
+ {
+	 userservice.deleteUserById(id);
+	 return new ResponseEntity<String>("Delete Operation successfully executed!! : user id "+id +" deleted" ,  HttpStatus.OK );
+ }
+ 
+ 
+}

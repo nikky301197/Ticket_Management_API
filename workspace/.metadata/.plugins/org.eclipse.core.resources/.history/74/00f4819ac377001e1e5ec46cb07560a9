@@ -1,0 +1,11 @@
+package com.ticket_management_tool.service;
+
+import org.springframework.stereotype.Service;
+
+@Service
+public interface UserService {
+	
+	List<User>getAllUser();
+	
+
+}

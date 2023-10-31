@@ -1,0 +1,16 @@
+package com.ticket_management_tool.service;
+
+import java.util.List;
+
+import org.springframework.stereotype.Service;
+
+import com.ticket_management_tool.entity.Category;
+
+@Service
+public interface CategoryService {
+	
+	List<Category> getallCategory();
+	String deleteCategoryById(Integer id );
+	Category createCategory(Category category);
+
+}

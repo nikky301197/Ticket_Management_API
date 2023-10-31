@@ -1,0 +1,5 @@
+package com.ticket_management_tool.entity;
+
+public class Roles {
+
+}

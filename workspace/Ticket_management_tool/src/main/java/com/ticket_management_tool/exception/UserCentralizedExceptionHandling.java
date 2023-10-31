@@ -1,0 +1,46 @@
+package com.ticket_management_tool.exception;
+
+import java.sql.SQLIntegrityConstraintViolationException;
+
+import org.springframework.http.HttpStatus;
+import org.springframework.http.HttpStatusCode;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.ControllerAdvice;
+import org.springframework.web.bind.annotation.ExceptionHandler;
+
+@ControllerAdvice
+public class UserCentralizedExceptionHandling {
+
+	@ExceptionHandler(ResourceNotFoundException.class)
+	ResponseEntity<ApiErrorResponse> resourceNotFoundException(ResourceNotFoundException ex) {
+		String msg = ex.getMessage();
+		String error = "Resource Not Found";
+		HttpStatus httpStatus = HttpStatus.NOT_FOUND;
+
+		ApiErrorResponse apierr = new ApiErrorResponse(error, msg , httpStatus);
+
+		return new ResponseEntity<ApiErrorResponse>(apierr, HttpStatus.NOT_FOUND);
+	}
+
+	@ExceptionHandler(SQLIntegrityConstraintViolationException.class)
+	ResponseEntity<ApiErrorResponse> sqlIntegrityConstraintViolationException(
+			SQLIntegrityConstraintViolationException ex) {
+
+		String msg = "";
+		String error = "";
+		HttpStatus httpStatus = null;
+
+		ApiErrorResponse apierr = new ApiErrorResponse();
+
+		if (ex.getMessage().contains("foreign key constraint fails")) {
+			msg = "Cannot add or update a child row because entered role_id is not present in parent table (Role)";
+			error = "Foreign Key Constrain Failed";
+			httpStatus = HttpStatus.UNPROCESSABLE_ENTITY;
+			apierr.setError(error);
+			apierr.setMessage(msg);
+			apierr.setHttpstatus(httpStatus);
+			
+		}
+		return new ResponseEntity<ApiErrorResponse>(apierr, HttpStatus.UNPROCESSABLE_ENTITY);
+	}
+}

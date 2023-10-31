@@ -1,0 +1,14 @@
+package com.ticket_management_tool.exception;
+
+import org.springframework.web.bind.annotation.ControllerAdvice;
+import org.springframework.web.bind.annotation.ExceptionHandler;
+
+@ControllerAdvice
+public class UserCentralizedExceptionHandling {
+
+	@ExceptionHandler(ResourceNotFoundException.class)
+	String resourceNotFoundException(ResourceNotFoundException ex) {
+     return ex.getMessage();
+	}
+
+}

@@ -1,0 +1,55 @@
+package com.ticket_management_tool.controller;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.HttpStatusCode;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.ticket_management_tool.entity.Role;
+import com.ticket_management_tool.exception.ResourceNotFoundException;
+import com.ticket_management_tool.repository.RoleRepo;
+import com.ticket_management_tool.service.RoleService;
+
+@RestController
+@RequestMapping("/ticket_management_tool/role")
+public class RoleController {
+
+	@Autowired
+	RoleService roleservice;
+
+//	@GetMapping("/")
+//	String get() {
+//		return "hello get method ";
+//	}
+
+	@GetMapping("/")
+	ResponseEntity<List<Role>> getAllRole() throws ResourceNotFoundException {
+
+		List<Role> list = roleservice.getAllRoles();
+		return new ResponseEntity<>(list, HttpStatus.OK);
+	}
+
+	@PostMapping("/")
+	ResponseEntity<Role> createRole(@RequestBody Role role) {
+
+		Role r1= roleservice.createRole(role);
+		return new ResponseEntity<>(r1, HttpStatus.CREATED);
+	}
+
+	@DeleteMapping("/{id}")
+	ResponseEntity<String> deleteRole(@PathVariable Integer id) throws ResourceNotFoundException {
+		
+		String msg = roleservice.deleteRoleById(id);
+
+		return new ResponseEntity<String>("id : "id + " deleted successfully", HttpStatus.OK);
+	}
+}

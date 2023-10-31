@@ -1,0 +1,28 @@
+package com.ticket_management_tool.service.impl;
+
+import java.util.List;
+
+import com.ticket_management_tool.entity.User;
+import com.ticket_management_tool.service.UserService;
+
+public class UserServiceImpl implements UserService {
+
+	@Override
+	public List<User> getAllUser() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public User createUser(User user) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public String deleteUserById() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

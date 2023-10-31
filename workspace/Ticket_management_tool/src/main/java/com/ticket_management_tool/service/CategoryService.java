@@ -1,0 +1,17 @@
+package com.ticket_management_tool.service;
+
+import java.util.List;
+
+import org.springframework.stereotype.Service;
+
+import com.ticket_management_tool.entity.Category;
+import com.ticket_management_tool.exception.ResourceNotFoundException;
+
+@Service
+public interface CategoryService {
+	
+	List<Category> getallCategory() throws ResourceNotFoundException;
+	String deleteCategoryById(Integer id ) throws ResourceNotFoundException;
+	Category createCategory(Category category);
+
+}

@@ -1,0 +1,40 @@
+package com.ticket_management_tool.exception;
+
+import java.sql.SQLIntegrityConstraintViolationException;
+
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.ControllerAdvice;
+import org.springframework.web.bind.annotation.ExceptionHandler;
+
+@ControllerAdvice
+public class UserCentralizedExceptionHandling {
+
+	@ExceptionHandler(ResourceNotFoundException.class)
+	ResponseEntity<String> resourceNotFoundException(ResourceNotFoundException ex) {
+     return new ResponseEntity<String>(ex.getMessage() , HttpStatus.NOT_FOUND);
+	}
+
+	@ExceptionHandler(SQLIntegrityConstraintViolationException.class)
+	void sqlIntegrityConstraintViolationException (SQLIntegrityConstraintViolationException ex)
+	{
+		
+		  String message = "";
+          String constraint = "";
+          HttpStatus httpStatus = null;
+		if (ex.getMessage().contains("foreign key constraint")) {
+            message = "Record still have reference from other table";
+            constraint = "USED_RECORD";
+            httpStatus = HttpStatus.UNPROCESSABLE_ENTITY;
+            
+            System.out.println("message :"+message);
+            System.out.println("constraint : "+constraint);
+            System.out.println("httpstatus "+httpStatus);
+            System.out.println("message "+ex.getMessage());
+            System.out.println("localize msg : "+ex.getLocalizedMessage());
+            System.out.println("stack trace  : "+ex.getStackTrace());
+            
+            
+	}
+	}
+}

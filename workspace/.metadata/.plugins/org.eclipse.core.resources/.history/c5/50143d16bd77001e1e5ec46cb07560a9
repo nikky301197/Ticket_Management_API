@@ -1,0 +1,17 @@
+package com.ticket_management_tool.exception;
+
+import org.springframework.http.HttpStatus;
+import org.springframework.http.HttpStatusCode;
+
+public class ApiErrorResponse {
+
+	private String error ;
+	private HttpStatus httpstatus;
+	private String message;
+	public ApiErrorResponse() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+	
+
+}

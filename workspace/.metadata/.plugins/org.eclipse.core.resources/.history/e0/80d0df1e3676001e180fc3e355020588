@@ -1,0 +1,5 @@
+package com.ticket_management_tool.service;
+
+public class RoleService {
+
+}
