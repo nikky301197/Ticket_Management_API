@@ -1,0 +1,76 @@
+create database ticket_management_db;
+
+use ticket_management_db;
+
+CREATE TABLE Roles (
+    role_id INT,
+    role_name VARCHAR(50) NOT NULL,
+    PRIMARY KEY (role_id)
+);
+
+insert into Roles values (1, "Ticket_category_manager");
+insert into Roles values (2, "Ticket_resolver");
+SELECT 
+    *
+FROM
+    roles;
+
+CREATE TABLE ticket_team (
+    resolver_id INT PRIMARY KEY,
+    resolver_name VARCHAR(100) NOT NULL,
+    role_id INT,
+    lastUpdated_date DATE,
+    FOREIGN KEY (role_id)
+        REFERENCES Roles (role_id)
+);
+SELECT 
+    *
+FROM
+    ticket_team;
+
+CREATE TABLE ticket_category (
+    category_id INT PRIMARY KEY,
+    category_name VARCHAR(300) NOT NULL
+);
+
+SELECT 
+    *
+FROM
+    ticket_category;
+
+CREATE TABLE user_info (
+    user_id INT PRIMARY KEY,
+    user_name VARCHAR(100) NOT NULL,
+    user_password VARCHAR(20) NOT NULL
+);
+SELECT 
+    *
+FROM
+    user_info;
+
+
+CREATE TABLE ticket (
+    ticket_id INT PRIMARY KEY,
+    ticket_category_id INT,
+    ticket_description VARCHAR(500) NOT NULL,
+    ticket_status VARCHAR(100) DEFAULT 'open',
+    Data_of_generation DATETIME,
+    Priority VARCHAR(100),
+    AssignedTo VARCHAR(100),
+    comment VARCHAR(500),
+    Last_update_date DATE,
+    user_id INT,
+    PhoneNo INT,
+    Mail_id VARCHAR(200),
+    FOREIGN KEY (user_id)
+        REFERENCES user_info (user_id),
+    FOREIGN KEY (ticket_category_id)
+        REFERENCES ticket_category (category_id)
+);
+
+SELECT 
+    *
+FROM
+    ticket;
+
+desc ticket ;
