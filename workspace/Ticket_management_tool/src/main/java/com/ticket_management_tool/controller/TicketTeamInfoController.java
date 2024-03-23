@@ -14,20 +14,20 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.ticket_management_tool.entity.TicketTeamInfo;
+import com.ticket_management_tool.entity.Ticket_Team_Info;
 import com.ticket_management_tool.exception.ResourceNotFoundException;
 import com.ticket_management_tool.service.TicketTeamInfoService;
 
 @RestController
-@RequestMapping("/ticket_management_tool/ticketteaminfo")
+@RequestMapping("/ticket_management_tool/ticketteams")
 public class TicketTeamInfoController {
 
 	@Autowired
 	TicketTeamInfoService ticketteamservice;
 
 	@GetMapping("/")
-	ResponseEntity<List<TicketTeamInfo>> getAllTicketTeam() throws ResourceNotFoundException {
-		List<TicketTeamInfo> list = ticketteamservice.getAllTicketTeamInfo();
+	ResponseEntity<List<Ticket_Team_Info>> getAllTicketTeam() throws ResourceNotFoundException {
+		List<Ticket_Team_Info> list = ticketteamservice.getAllTicketTeamInfo();
 		return new ResponseEntity<>(list, HttpStatus.OK);
 	}
 
@@ -38,9 +38,9 @@ public class TicketTeamInfoController {
 	}
 	
 	@PostMapping("/")
-	ResponseEntity<TicketTeamInfo > createTicketTeam(@RequestBody TicketTeamInfo ticketteam) throws  SQLIntegrityConstraintViolationException
+	ResponseEntity<Ticket_Team_Info > createTicketTeam(@RequestBody Ticket_Team_Info ticketteam) throws  SQLIntegrityConstraintViolationException
 	{
-	 TicketTeamInfo t1= 	ticketteamservice.createTicketTeamInfo(ticketteam);
+		Ticket_Team_Info t1= 	ticketteamservice.createTicketTeamInfo(ticketteam);
 	 System.out.println(t1.toString());
 	 return new ResponseEntity(t1 , HttpStatus.OK);
 	}

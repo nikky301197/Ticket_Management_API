@@ -1,76 +1,52 @@
 package com.ticket_management_tool.entity;
 
-
-
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 
 @Entity
-
-
 public class Role {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private Integer role_id;
-	private String role_name;
-	
+	private Integer roleId;
+	private String roleName;
+
 //	@OneToMany(mappedBy = "role" , cascade = CascadeType.ALL , fetch = FetchType.LAZY)
 //	
 //	List<TicketTeamInfo> ticketteaminfo ; 
-	
-	
-	
+
 	public Role() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-
-
-	public Role(Integer role_id, String role_name) {
+	public Role(Integer roleId, String roleName) {
 		super();
-		this.role_id = role_id;
-		this.role_name = role_name;
-		
+		this.roleId = roleId;
+		this.roleName = roleName;
 	}
 
-
-
-	public Integer getRole_id() {
-		return role_id;
+	public Integer getRoleId() {
+		return roleId;
 	}
 
-
-
-	public void setRole_id(Integer role_id) {
-		this.role_id = role_id;
+	public void setRoleId(Integer roleId) {
+		this.roleId = roleId;
 	}
 
-
-
-	public String getRole_name() {
-		return role_name;
+	public String getRoleName() {
+		return roleName;
 	}
 
-
-
-	public void setRole_name(String role_name) {
-		this.role_name = role_name;
+	public void setRoleName(String roleName) {
+		this.roleName = roleName;
 	}
-
-
-
-	
-
 
 	@Override
 	public String toString() {
-		return "Role [role_id=" + role_id + ", role_name=" + role_name + "]";
+		return "Role [roleId=" + roleId + ", roleName=" + roleName + "]";
 	}
-
-
 
 }

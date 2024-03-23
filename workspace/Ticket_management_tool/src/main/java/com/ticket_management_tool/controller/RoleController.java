@@ -4,7 +4,6 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,11 +15,10 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.ticket_management_tool.entity.Role;
 import com.ticket_management_tool.exception.ResourceNotFoundException;
-import com.ticket_management_tool.repository.RoleRepo;
 import com.ticket_management_tool.service.RoleService;
 
 @RestController
-@RequestMapping("/ticket_management_tool/role")
+@RequestMapping("/ticket_management_tool/roles")
 public class RoleController {
 
 	@Autowired

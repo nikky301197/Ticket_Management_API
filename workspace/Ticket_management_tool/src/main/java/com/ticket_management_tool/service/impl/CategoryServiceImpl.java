@@ -32,7 +32,7 @@ public class CategoryServiceImpl implements CategoryService {
 	public String deleteCategoryById(Integer id) throws ResourceNotFoundException {
 		categoryrepo.findById(id).orElseThrow(()->
 	   new ResourceNotFoundException("Delete operation failed : Entered category id "+id+" is not present in category table "));
-		
+		  
 		categoryrepo.deleteById(id);
 		return "Category id :" +id +" deleted successfully : " ; 
 		
@@ -46,3 +46,4 @@ public class CategoryServiceImpl implements CategoryService {
 	}
 
 }
+ 

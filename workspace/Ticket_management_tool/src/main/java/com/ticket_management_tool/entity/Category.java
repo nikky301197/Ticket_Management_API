@@ -9,28 +9,28 @@ import jakarta.persistence.Id;
 public class Category {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	Integer cateagory_id ; 
-	String category_name ;
+	Integer cateagoryId ; 
+	String categoryName ;
 	public Category() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public Category(Integer cateagory_id, String category_name) {
+	public Category(Integer cateagoryId, String categoryName) {
 		super();
-		this.cateagory_id = cateagory_id;
-		this.category_name = category_name;
+		this.cateagoryId = cateagoryId;
+		this.categoryName = categoryName;
 	}
-	public Integer getCateagory_id() {
-		return cateagory_id;
+	public Integer getCateagoryId() {
+		return cateagoryId;
 	}
-	public void setCateagory_id(Integer cateagory_id) {
-		this.cateagory_id = cateagory_id;
+	public void setCateagoryId(Integer cateagoryId) {
+		this.cateagoryId = cateagoryId;
 	}
-	public String getCategory_name() {
-		return category_name;
+	public String getCategoryName() {
+		return categoryName;
 	}
-	public void setCategory_name(String category_name) {
-		this.category_name = category_name;
+	public void setCategoryName(String categoryName) {
+		this.categoryName = categoryName;
 	}
 	
 	

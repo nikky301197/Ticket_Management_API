@@ -4,7 +4,6 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -19,7 +18,7 @@ import com.ticket_management_tool.exception.ResourceNotFoundException;
 import com.ticket_management_tool.service.CategoryService;
 
 @RestController
-@RequestMapping("/ticket_management_tool/category")
+@RequestMapping("/ticket_management_tool/categories")
 public class CategoryController {
 
 	@Autowired
